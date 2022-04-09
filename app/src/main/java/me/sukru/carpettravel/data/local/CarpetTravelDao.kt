@@ -10,6 +10,9 @@ interface CarpetTravelDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpaceShip(spaceShip: SpaceShipEntity)
 
+    @Query("DELETE FROM SpaceShipEntity")
+    fun deleteSpaceShips()
+
     @Query("SELECT * FROM SpaceShipEntity LIMIT 1")
     fun getSpaceShip(): SpaceShipEntity
 

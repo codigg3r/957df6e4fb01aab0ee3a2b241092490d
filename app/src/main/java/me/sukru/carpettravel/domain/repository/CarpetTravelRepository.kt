@@ -16,4 +16,6 @@ interface CarpetTravelRepository {
     suspend fun updateSpaceStation(spaceStation: SpaceStationEntity): Int
 
     suspend fun updateSpaceShip(spaceShip: SpaceShipEntity): Int
+
+    suspend fun deleteAllSpaceShips()
 }

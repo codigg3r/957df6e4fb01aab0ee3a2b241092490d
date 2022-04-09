@@ -14,6 +14,7 @@ class UpsertSpaceShipUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(spaceShip: SpaceShip) {
         withContext(Dispatchers.IO) {
+            localCarpetTravelDataSource.deleteAllSpaceShips()
             localCarpetTravelDataSource.insertSpaceShip(spaceShip.toEntity())
         }
     }
