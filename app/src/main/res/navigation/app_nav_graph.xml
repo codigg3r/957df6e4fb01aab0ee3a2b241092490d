@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/spaceShipCreateFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="me.sukru.carpettravel.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/spaceShipCreateFragment"
+        android:name="me.sukru.carpettravel.presentation.space_ship_create.SpaceShipCreateFragment"
+        android:label="fragment_create_space_ship"
+        tools:layout="@layout/fragment_create_space_ship" >
+        <action
+            android:id="@+id/action_spaceShipCreateFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

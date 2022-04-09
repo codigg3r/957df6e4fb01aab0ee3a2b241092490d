@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Carpet Travel</string>
+    <string name="space_ship_name">SpaceShip Name</string>
+    <string name="continue_">CONTINUE</string>
+    <string name="station">Station</string>
+    <string name="favorites">Favorites</string>
 </resources>

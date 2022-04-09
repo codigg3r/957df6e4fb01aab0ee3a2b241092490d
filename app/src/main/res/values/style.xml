@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- region TextInputLayout & TextInputEditText styles -->
+    <style name="TextInputLayout.OutlineBox.CustomStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:theme">@style/ThemeOverlay.TextInputEditText.OutlinedBox.CustomStyle</item>
+        <item name="android:textColorHint">@color/black_700</item>
+        <item name="boxStrokeColor">@color/container_color</item>
+        <item name="hintTextColor">@color/green_600</item>
+    </style>
+    <style name="ThemeOverlay.TextInputEditText.OutlinedBox.CustomStyle" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/TextInputEditText.OutlinedBox.CustomStyle</item>
+        <item name="colorControlActivated">@color/black_700</item>
+        <item name="android:editTextColor">@color/gray</item>
+    </style>
+    <style name="TextInputEditText.OutlinedBox.CustomStyle" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- region Slider styles -->
+    <style name="Widget.MaterialComponents.Slider.CustomStyle" parent="Widget.MaterialComponents.Slider">
+        <item name="trackColor">@color/green_600</item>
+        <item name="thumbColor">@color/green_600</item>
+        <item name="tickColorInactive">@color/black_800</item>
+        <item name="tickColorActive">@color/white</item>
+        <item name="trackHeight">8dp</item>
+        <item name="labelStyle">@style/Widget.App.Tooltip</item>
+        <item name="thumbRadius">15dp</item>
+        <item name="haloColor">@color/green_600</item>
+    </style>
+    <style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="android:textAppearance">@style/TextAppearance.App.Tooltip</item>
+        <item name="backgroundTint">@color/green_600</item>
+    </style>
+    <style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+</resources>

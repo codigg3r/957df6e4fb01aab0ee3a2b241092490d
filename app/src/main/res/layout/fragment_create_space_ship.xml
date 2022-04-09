@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.space_ship_create.SpaceShipCreateFragment"
+    android:background="@color/black_800">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        >
+
+        <TextView
+            android:id="@+id/space_ship_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Remaining Points: "
+            android:textColor="@color/gray"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@id/space_ship_points"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/space_ship_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="15"
+            android:textColor="@color/gray"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="@id/space_ship_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/space_ship_title"
+            app:layout_constraintTop_toTopOf="@id/space_ship_title" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Select a ship to create"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space_ship_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spaceship_name_input_layout"
+            style="@style/TextInputLayout.OutlineBox.CustomStyle"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24sp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/space_ship_name"
+            app:layout_constraintTop_toBottomOf="@id/description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/spaceship_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/seekbar_speed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Speed"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/speed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spaceship_name_input_layout" />
+
+        <me.sukru.carpettravel.common.RestrictedSlider
+            android:id="@+id/speed"
+            style="@style/Widget.MaterialComponents.Slider.CustomStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="15"
+            app:labelBehavior="floating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekbar_speed_title" />
+
+        <TextView
+            android:id="@+id/seekbar_strength_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Strength"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/strength"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/speed" />
+
+        <me.sukru.carpettravel.common.RestrictedSlider
+            android:id="@+id/strength"
+            style="@style/Widget.MaterialComponents.Slider.CustomStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="15"
+            app:labelBehavior="floating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekbar_strength_title" />
+
+        <TextView
+            android:id="@+id/seekbar_capacity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Capacity"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/capacity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/strength" />
+
+        <me.sukru.carpettravel.common.RestrictedSlider
+            android:id="@+id/capacity"
+            style="@style/Widget.MaterialComponents.Slider.CustomStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="15"
+            app:labelBehavior="floating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekbar_capacity_title" />
+
+        <TextView
+            android:id="@+id/continue_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/green_600"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/continue_"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/capacity"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
