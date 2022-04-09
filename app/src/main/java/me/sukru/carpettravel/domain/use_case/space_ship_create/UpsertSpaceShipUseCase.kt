@@ -1,4 +1,4 @@
-package me.sukru.carpettravel.domain.use_case
+package me.sukru.carpettravel.domain.use_case.space_ship_create
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow

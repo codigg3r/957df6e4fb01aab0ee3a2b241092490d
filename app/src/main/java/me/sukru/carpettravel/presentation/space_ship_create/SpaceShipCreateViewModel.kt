@@ -8,9 +8,9 @@ import kotlinx.coroutines.launch
 import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.SingleLiveEvent
 import me.sukru.carpettravel.domain.model.SpaceShip
-import me.sukru.carpettravel.domain.use_case.CalculateRemainingPointsUseCase
-import me.sukru.carpettravel.domain.use_case.UpsertSpaceShipUseCase
-import me.sukru.carpettravel.domain.use_case.ValidateSpaceShipUseCase
+import me.sukru.carpettravel.domain.use_case.space_ship_create.CalculateRemainingPointsUseCase
+import me.sukru.carpettravel.domain.use_case.space_ship_create.UpsertSpaceShipUseCase
+import me.sukru.carpettravel.domain.use_case.space_ship_create.ValidateSpaceShipUseCase
 import javax.inject.Inject
 
 @HiltViewModel

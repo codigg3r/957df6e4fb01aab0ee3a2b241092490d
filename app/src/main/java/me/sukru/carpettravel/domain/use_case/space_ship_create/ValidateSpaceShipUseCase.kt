@@ -1,4 +1,4 @@
-package me.sukru.carpettravel.domain.use_case
+package me.sukru.carpettravel.domain.use_case.space_ship_create
 
 import me.sukru.carpettravel.domain.model.SpaceShip
 import javax.inject.Inject

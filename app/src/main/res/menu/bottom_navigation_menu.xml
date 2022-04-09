@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_station"
+        android:id="@+id/station_fragment"
         android:icon="@drawable/ic_baseline_rocket_24"
         android:title="@string/station" />
     <item
-        android:id="@+id/navigation_favorites"
+        android:id="@+id/favorite_station_fragment"
         android:icon="@drawable/ic_baseline_star_24"
         android:title="@string/favorites" />
 

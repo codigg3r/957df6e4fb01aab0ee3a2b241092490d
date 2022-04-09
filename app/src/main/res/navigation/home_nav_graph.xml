@@ -3,11 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
-    app:startDestination="@id/homeFragment">
-
+    app:startDestination="@id/station_fragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="me.sukru.carpettravel.presentation.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/station_fragment"
+        android:name="me.sukru.carpettravel.presentation.station.StationFragment"
+        android:label="fragment_station"
+        tools:layout="@layout/fragment_station" />
+    <fragment
+        android:id="@+id/favorite_station_fragment"
+        android:name="me.sukru.carpettravel.presentation.favorite_station.FavoriteStationFragment"
+        android:label="fragment_favorite_station"
+        tools:layout="@layout/fragment_favorite_station" />
 </navigation>
