@@ -1,11 +1,12 @@
 package me.sukru.carpettravel.domain.repository
 
+import kotlinx.coroutines.flow.Flow
 import me.sukru.carpettravel.data.local.dto.SpaceShipEntity
 import me.sukru.carpettravel.data.local.dto.SpaceStationEntity
 
 interface CarpetTravelRepository {
 
-    suspend fun getSpaceStations(): List<SpaceStationEntity?>
+    suspend fun getSpaceStations(): List<SpaceStationEntity>
 
     suspend fun getSpaceShip(): SpaceShipEntity
 
@@ -18,4 +19,6 @@ interface CarpetTravelRepository {
     suspend fun updateSpaceShip(spaceShip: SpaceShipEntity): Int
 
     suspend fun deleteAllSpaceShips()
+
+    fun getSpaceStationsFlow(stationName: String, isOnlyFavorite: Boolean): Flow<List<SpaceStationEntity>>
 }

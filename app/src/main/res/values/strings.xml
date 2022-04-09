@@ -4,4 +4,6 @@
     <string name="continue_">CONTINUE</string>
     <string name="station">Station</string>
     <string name="favorites">Favorites</string>
+    <string name="travel">TRAVEL</string>
+    <string name="search">Search</string>
 </resources>

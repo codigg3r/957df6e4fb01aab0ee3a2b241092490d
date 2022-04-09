@@ -8,6 +8,7 @@ import me.sukru.carpettravel.data.local.CarpetTravelLocalDataSource
 import me.sukru.carpettravel.data.toEntity
 import me.sukru.carpettravel.domain.model.SpaceShip
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 
 class UpsertSpaceShipUseCase @Inject constructor(
     private val localCarpetTravelDataSource: CarpetTravelLocalDataSource
@@ -15,7 +16,13 @@ class UpsertSpaceShipUseCase @Inject constructor(
     suspend operator fun invoke(spaceShip: SpaceShip) {
         withContext(Dispatchers.IO) {
             localCarpetTravelDataSource.deleteAllSpaceShips()
-            localCarpetTravelDataSource.insertSpaceShip(spaceShip.toEntity())
+            val spaceShipWithValues = spaceShip.copy(
+                ugs = spaceShip.capacity.times(10_000.0),
+                eus = spaceShip.speed.times(20.0),
+                ds = spaceShip.strength.times(10_000.0),
+                dsTimer = spaceShip.strength.times(10.0)
+            )
+            localCarpetTravelDataSource.insertSpaceShip(spaceShipWithValues.toEntity())
         }
     }
 }

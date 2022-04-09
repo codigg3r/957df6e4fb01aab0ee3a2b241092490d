@@ -1,5 +1,9 @@
 package me.sukru.carpettravel.data.remote
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import me.sukru.carpettravel.data.local.dto.SpaceShipEntity
 import me.sukru.carpettravel.data.local.dto.SpaceStationEntity
 import me.sukru.carpettravel.data.toEntity
@@ -9,7 +13,7 @@ import javax.inject.Inject
 class CarpetTravelRemoteDataSource @Inject constructor(
     private val api: SpaceStationApi
 ): CarpetTravelRepository {
-    override suspend fun getSpaceStations(): List<SpaceStationEntity?> {
+    override suspend fun getSpaceStations(): List<SpaceStationEntity> {
         return api.getSpaceStation().map { it.toEntity() }
     }
 
@@ -34,6 +38,10 @@ class CarpetTravelRemoteDataSource @Inject constructor(
     }
 
     override suspend fun deleteAllSpaceShips() {
+        throw NotImplementedError()
+    }
+
+    override fun getSpaceStationsFlow(stationName: String, isOnlyFavorite: Boolean): Flow<List<SpaceStationEntity>> {
         throw NotImplementedError()
     }
 }
