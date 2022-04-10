@@ -15,4 +15,5 @@ data class SpaceStationEntity(
     val capacity: Int,
     val isFavorite: Boolean = false,
     val isVisited: Boolean = false,
+    val isCurrentStation: Boolean = false,
 )

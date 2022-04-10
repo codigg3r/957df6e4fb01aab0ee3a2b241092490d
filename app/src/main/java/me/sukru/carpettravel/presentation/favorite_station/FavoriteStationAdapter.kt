@@ -1,45 +1,34 @@
-package me.sukru.carpettravel.presentation.station
+package me.sukru.carpettravel.presentation.favorite_station
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.sukru.carpettravel.R
-import me.sukru.carpettravel.common.extensions.nDecimal
-import me.sukru.carpettravel.databinding.RowSpaceStationBinding
+import me.sukru.carpettravel.databinding.RowFavoriteSpaceStationBinding
 import me.sukru.carpettravel.domain.model.Station
 
-
-class StationAdapter(
-    private val onTravelClick: (Station) -> Unit,
+class FavoriteStationAdapter(
     private val onFavoriteClick: (Station) -> Unit,
-): ListAdapter<Station, StationAdapter.StationViewHolder>(StationDiffCallbackUtil()) {
+): ListAdapter<Station, FavoriteStationAdapter.StationViewHolder>(StationDiffCallbackUtil()) {
 
-    inner class StationViewHolder(private val binding: RowSpaceStationBinding) :
+    inner class StationViewHolder(private val binding: RowFavoriteSpaceStationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Station) {
             binding.stationName.text = item.name
-            binding.eus.text = "EUS: ${(item.eus).nDecimal(2)}"
+            binding.eus.text = "EUS: ${firstTwoDecimals(item.eus)}"
             binding.stationStock.text = "${item.capacity}/${item.stock}"
             binding.favoriteButton.setImageResource(if (item.isFavorite) R.drawable.ic_baseline_star_24 else R.drawable.ic_baseline_star_border_24)
             binding.favoriteButton.setOnClickListener {
                 onFavoriteClick(item)
             }
-            binding.travel.backgroundTintList = ContextCompat
-                .getColorStateList(binding.root.context, if(item.isVisited) R.color.gray else R.color.green_600)
-            binding.travel.isEnabled = !item.isVisited
-            if (item.isVisited) {
-                binding.travel.setOnClickListener(null)
-            } else {
-                binding.travel.setOnClickListener {
-                    onTravelClick(item)
-                }
-            }
         }
     }
 
+    fun firstTwoDecimals(value: Double): String {
+        return String.format("%.2f", value)
+    }
     class StationDiffCallbackUtil : DiffUtil.ItemCallback<Station>() {
 
         override fun areItemsTheSame(oldItem: Station, newItem: Station): Boolean {
@@ -51,7 +40,7 @@ class StationAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationViewHolder {
-        val binding = RowSpaceStationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RowFavoriteSpaceStationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return StationViewHolder(binding)
     }
 

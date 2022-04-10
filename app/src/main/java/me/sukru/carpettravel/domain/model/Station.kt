@@ -11,4 +11,5 @@ data class Station(
     val isFavorite: Boolean = false,
     val isVisited: Boolean = false,
     val eus: Double = 0.0,
+    val isCurrentStation: Boolean = false,
 )

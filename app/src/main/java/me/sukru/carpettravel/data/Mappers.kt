@@ -42,6 +42,7 @@ fun Station.toEntity(): SpaceStationEntity {
         capacity = capacity,
         isFavorite = isFavorite,
         isVisited = isVisited,
+        isCurrentStation = isCurrentStation,
     )
 }
 
@@ -56,19 +57,20 @@ fun SpaceStationEntity.toDomain(): Station {
         stock = stock,
         isFavorite = isFavorite,
         isVisited = isVisited,
+        isCurrentStation = isCurrentStation,
     )
 }
 
 fun SpaceShipEntity.toDomain(): SpaceShip {
     return SpaceShip(
-        name = name,
-        speed = speed.toFloat(),
-        capacity = capacity.toFloat(),
-        strength = strength.toFloat(),
-        ugs = ugs,
-        eus = eus,
-        ds = ds,
-        health = health,
-        dsTimer = dsTimer,
+        name = name ?: "",
+        speed = speed?.toFloat() ?: 0F,
+        capacity = capacity?.toFloat() ?: 0F,
+        strength = strength?.toFloat() ?: 0F,
+        ugs = ugs ?: 0.0,
+        eus = eus ?: 0.0,
+        ds = ds ?: 0.0,
+        health = health ?: 0,
+        dsTimer = dsTimer ?: 0.0,
     )
 }

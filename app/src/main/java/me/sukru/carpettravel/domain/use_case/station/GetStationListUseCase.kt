@@ -3,6 +3,7 @@ package me.sukru.carpettravel.domain.use_case.station
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import me.sukru.carpettravel.common.Resource
+import me.sukru.carpettravel.common.extensions.calculateEUS
 import me.sukru.carpettravel.data.local.CarpetTravelLocalDataSource
 import me.sukru.carpettravel.data.local.dto.SpaceStationEntity
 import me.sukru.carpettravel.data.remote.CarpetTravelRemoteDataSource
@@ -20,14 +21,14 @@ class GetStationListUseCase @Inject constructor(
      * @return [Resource] with [List] of [Station]
      * currentStation is for calculating EUS
      */
-    operator fun invoke(currentStation: Station? = null, stationName: String = "", isOnlyFavorite: Boolean = false) = flow<Resource<List<Station>>> {
+    operator fun invoke(stationName: String = "") = flow<Resource<List<Station>>> {
         emit(Resource.Loading())
         var spaceStationList = localDataSource.getSpaceStations()
         var hasError = false
         if (spaceStationList.isEmpty()) {
             try {
                 spaceStationList = remoteDataSource.getSpaceStations()
-                localDataSource.insertSpaceStations(spaceStationList)
+                localDataSource.insertSpaceStations(spaceStationList.map { if (it.name == "Dünya") it.copy(isCurrentStation = true, isVisited = true) else it })
             } catch (e: Exception) {
                 hasError = true
             }
@@ -35,24 +36,13 @@ class GetStationListUseCase @Inject constructor(
         if (hasError) {
             emit(Resource.Error("Network error happened"))
         } else {
-            localDataSource.getSpaceStationsFlow(stationName, isOnlyFavorite).collect {
+           localDataSource.getSpaceStationsFlow(stationName).collect {
+               val currentStation = it.firstOrNull { it.isCurrentStation }
                emit(Resource.Success(it.map { spaceStation ->
-                   spaceStation.toDomain().copy(eus = calculateEUS(spaceStation, currentStation))
+                   spaceStation.toDomain().copy(eus = spaceStation.calculateEUS(currentStation?.toDomain()))
                }))
            }
         }
 
     }.flowOn(Dispatchers.IO)
-
-    private fun calculateEUS(it: SpaceStationEntity, currentStation: Station?): Double {
-        return if (currentStation == null) {
-            val x = it.coordinateX
-            val y = it.coordinateY
-            (x * x + y * y).pow(0.5)
-        } else {
-            val x = it.coordinateX - currentStation.coordinateX
-            val y = it.coordinateY - currentStation.coordinateY
-            (x * x + y * y).pow(0.5)
-        }
-    }
 }

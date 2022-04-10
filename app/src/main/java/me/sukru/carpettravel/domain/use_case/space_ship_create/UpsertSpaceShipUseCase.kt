@@ -15,7 +15,6 @@ class UpsertSpaceShipUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(spaceShip: SpaceShip) {
         withContext(Dispatchers.IO) {
-            localCarpetTravelDataSource.deleteAllSpaceShips()
             val spaceShipWithValues = spaceShip.copy(
                 ugs = spaceShip.capacity.times(10_000.0),
                 eus = spaceShip.speed.times(20.0),

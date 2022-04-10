@@ -17,7 +17,7 @@ class CarpetTravelRemoteDataSource @Inject constructor(
         return api.getSpaceStation().map { it.toEntity() }
     }
 
-    override suspend fun getSpaceShip(): SpaceShipEntity {
+    override suspend fun getSpaceShip(): Flow<SpaceShipEntity> {
         throw NotImplementedError()
     }
 
@@ -41,7 +41,19 @@ class CarpetTravelRemoteDataSource @Inject constructor(
         throw NotImplementedError()
     }
 
-    override fun getSpaceStationsFlow(stationName: String, isOnlyFavorite: Boolean): Flow<List<SpaceStationEntity>> {
+    override fun getSpaceStationsFlow(stationName: String): Flow<List<SpaceStationEntity>> {
+        throw NotImplementedError()
+    }
+
+    override fun getFavoriteStationsFlow(): Flow<List<SpaceStationEntity>> {
+        throw NotImplementedError()
+    }
+
+    override fun getCurrentStationFlow(): Flow<SpaceStationEntity> {
+        throw NotImplementedError()
+    }
+
+    override fun isAllStationsVisited(): Boolean {
         throw NotImplementedError()
     }
 }

@@ -13,7 +13,7 @@ class CarpetTravelLocalDataSource @Inject constructor(
         return carpetTravelDao.getSpaceStations()
     }
 
-    override suspend fun getSpaceShip(): SpaceShipEntity {
+    override suspend fun getSpaceShip(): Flow<SpaceShipEntity> {
         return carpetTravelDao.getSpaceShip()
     }
 
@@ -34,14 +34,23 @@ class CarpetTravelLocalDataSource @Inject constructor(
     }
 
     override suspend fun deleteAllSpaceShips() {
-        carpetTravelDao.deleteSpaceShips()
+
     }
 
-    override fun getSpaceStationsFlow(stationName: String, isOnlyFavorite: Boolean): Flow<List<SpaceStationEntity>> {
-        if(isOnlyFavorite) {
-            return carpetTravelDao.getFavoriteStationsFlow()
-        }
+    override fun getSpaceStationsFlow(stationName: String): Flow<List<SpaceStationEntity>> {
         return carpetTravelDao.getSpaceStationsFlow(stationName)
+    }
+
+    override fun getFavoriteStationsFlow(): Flow<List<SpaceStationEntity>> {
+        return carpetTravelDao.getFavoriteStationsFlow()
+    }
+
+    override fun getCurrentStationFlow(): Flow<SpaceStationEntity> {
+        return carpetTravelDao.getCurrentStation()
+    }
+
+    override fun isAllStationsVisited(): Boolean {
+        return carpetTravelDao.notYetVisitedStationsCount() == 0
     }
 
 }

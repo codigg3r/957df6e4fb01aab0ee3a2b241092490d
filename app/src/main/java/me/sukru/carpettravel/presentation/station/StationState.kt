@@ -14,4 +14,5 @@ data class StationState(
     val isLoading: Boolean = false,
     val error: String? = null,
     val dsTimer: Double = 0.0,
+    val currentStation: Station? = null,
 )

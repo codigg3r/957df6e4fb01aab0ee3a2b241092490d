@@ -8,7 +8,7 @@ interface CarpetTravelRepository {
 
     suspend fun getSpaceStations(): List<SpaceStationEntity>
 
-    suspend fun getSpaceShip(): SpaceShipEntity
+    suspend fun getSpaceShip(): Flow<SpaceShipEntity>
 
     suspend fun insertSpaceShip(spaceShip: SpaceShipEntity)
 
@@ -20,5 +20,11 @@ interface CarpetTravelRepository {
 
     suspend fun deleteAllSpaceShips()
 
-    fun getSpaceStationsFlow(stationName: String, isOnlyFavorite: Boolean): Flow<List<SpaceStationEntity>>
+    fun getSpaceStationsFlow(stationName: String): Flow<List<SpaceStationEntity>>
+
+    fun getFavoriteStationsFlow(): Flow<List<SpaceStationEntity>>
+
+    fun getCurrentStationFlow(): Flow<SpaceStationEntity>
+
+    fun isAllStationsVisited(): Boolean
 }

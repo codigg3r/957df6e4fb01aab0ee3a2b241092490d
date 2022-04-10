@@ -11,11 +11,8 @@ interface CarpetTravelDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpaceShip(spaceShip: SpaceShipEntity)
 
-    @Query("DELETE FROM SpaceShipEntity")
-    fun deleteSpaceShips()
-
     @Query("SELECT * FROM SpaceShipEntity LIMIT 1")
-    fun getSpaceShip(): SpaceShipEntity
+    fun getSpaceShip(): Flow<SpaceShipEntity>
 
     @Update
     fun updateSpaceShip(spaceShip: SpaceShipEntity): Int
@@ -32,7 +29,13 @@ interface CarpetTravelDao {
     @Query("SELECT * FROM SpaceStationEntity WHERE isFavorite like 1")
     fun getFavoriteStationsFlow(): Flow<List<SpaceStationEntity>>
 
+    @Query("SELECT * FROM SpaceStationEntity WHERE isCurrentStation like 1")
+    fun getCurrentStation(): Flow<SpaceStationEntity>
+
     @Update
     fun updateSpaceStation(spaceShip: SpaceStationEntity): Int
+
+    @Query("SELECT COUNT(*) FROM SpaceStationEntity WHERE isVisited like 0")
+    fun notYetVisitedStationsCount(): Int
 
 }
