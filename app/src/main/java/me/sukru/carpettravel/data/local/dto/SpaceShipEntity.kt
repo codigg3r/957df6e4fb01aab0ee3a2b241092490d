@@ -16,4 +16,8 @@ data class SpaceShipEntity(
     val eus: Double?,
     val ds: Double?,
     val dsTimer: Double?,
+    val ugsInitial: Double?,
+    val eusInitial: Double?,
+    val dsInitial: Double?,
+    val dsTimerInitial: Double?,
 )

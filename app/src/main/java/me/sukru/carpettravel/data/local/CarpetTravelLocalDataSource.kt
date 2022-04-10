@@ -13,7 +13,11 @@ class CarpetTravelLocalDataSource @Inject constructor(
         return carpetTravelDao.getSpaceStations()
     }
 
-    override fun getSpaceShip(): Flow<SpaceShipEntity> {
+    override fun getSpaceShipFlow(): Flow<SpaceShipEntity> {
+        return carpetTravelDao.getSpaceShipFlow()
+    }
+
+    override fun getSpaceShip(): SpaceShipEntity {
         return carpetTravelDao.getSpaceShip()
     }
 

@@ -28,6 +28,10 @@ fun SpaceShip.toEntity(): SpaceShipEntity {
         ds = ds,
         health = health,
         dsTimer = dsTimer,
+        ugsInitial = ugsInitial,
+        eusInitial = eusInitial,
+        dsInitial = dsInitial,
+        dsTimerInitial = dsTimerInitial,
     )
 }
 
@@ -72,5 +76,9 @@ fun SpaceShipEntity.toDomain(): SpaceShip {
         ds = ds ?: 0.0,
         health = health ?: 0,
         dsTimer = dsTimer ?: 0.0,
+        ugsInitial = ugsInitial ?: 0.0,
+        eusInitial = eusInitial ?: 0.0,
+        dsInitial = dsInitial ?: 0.0,
+        dsTimerInitial = dsTimerInitial ?: 0.0,
     )
 }

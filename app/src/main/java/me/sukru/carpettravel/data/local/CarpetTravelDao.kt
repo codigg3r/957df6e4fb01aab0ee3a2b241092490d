@@ -12,7 +12,10 @@ interface CarpetTravelDao {
     fun insertSpaceShip(spaceShip: SpaceShipEntity)
 
     @Query("SELECT * FROM SpaceShipEntity LIMIT 1")
-    fun getSpaceShip(): Flow<SpaceShipEntity>
+    fun getSpaceShipFlow(): Flow<SpaceShipEntity>
+
+    @Query("SELECT * FROM SpaceShipEntity LIMIT 1")
+    fun getSpaceShip(): SpaceShipEntity
 
     @Update
     fun updateSpaceShip(spaceShip: SpaceShipEntity): Int

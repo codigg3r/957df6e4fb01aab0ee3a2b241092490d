@@ -16,7 +16,7 @@ class GetSpaceShipUseCase @Inject constructor(
 ) {
     operator fun invoke() = flow<Resource<SpaceShip>> {
         emit(Resource.Loading())
-        localDataSource.getSpaceShip().collect {
+        localDataSource.getSpaceShipFlow().collect {
             try {
                 emit(Resource.Success(it.toDomain()))
             } catch (e: Exception) {

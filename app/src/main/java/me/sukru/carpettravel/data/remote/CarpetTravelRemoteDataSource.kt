@@ -14,7 +14,11 @@ class CarpetTravelRemoteDataSource @Inject constructor(
         return api.getSpaceStation().map { it.toEntity() }
     }
 
-    override fun getSpaceShip(): Flow<SpaceShipEntity> {
+    override fun getSpaceShipFlow(): Flow<SpaceShipEntity> {
+        throw NotImplementedError()
+    }
+
+    override fun getSpaceShip(): SpaceShipEntity {
         throw NotImplementedError()
     }
 

@@ -8,7 +8,9 @@ interface CarpetTravelRepository {
 
     suspend fun getSpaceStations(): List<SpaceStationEntity>
 
-    fun getSpaceShip(): Flow<SpaceShipEntity>
+    fun getSpaceShipFlow(): Flow<SpaceShipEntity>
+
+    fun getSpaceShip(): SpaceShipEntity
 
     suspend fun insertSpaceShip(spaceShip: SpaceShipEntity)
 

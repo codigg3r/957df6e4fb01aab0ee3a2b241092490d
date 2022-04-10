@@ -19,7 +19,11 @@ class UpsertSpaceShipUseCase @Inject constructor(
                 ugs = spaceShip.capacity.times(10_000.0),
                 eus = spaceShip.speed.times(20.0),
                 ds = spaceShip.strength.times(10_000.0),
-                dsTimer = spaceShip.strength.times(10.0)
+                dsTimer = spaceShip.strength.times(10.0),
+                ugsInitial = spaceShip.capacity.times(10_000.0),
+                eusInitial = spaceShip.speed.times(20.0),
+                dsInitial = spaceShip.strength.times(10_000.0),
+                dsTimerInitial = spaceShip.strength.times(10.0),
             )
             localCarpetTravelDataSource.insertSpaceShip(spaceShipWithValues.toEntity())
         }

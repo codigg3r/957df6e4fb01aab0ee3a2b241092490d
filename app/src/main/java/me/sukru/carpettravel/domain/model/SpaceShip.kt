@@ -10,4 +10,8 @@ data class SpaceShip(
     val eus: Double = 0.0,
     val ds: Double = 0.0,
     val dsTimer: Double = 0.0,
+    val ugsInitial: Double = 0.0,
+    val eusInitial: Double = 0.0,
+    val dsInitial: Double = 0.0,
+    val dsTimerInitial: Double = 0.0,
 )
