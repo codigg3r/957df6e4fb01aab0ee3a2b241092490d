@@ -33,7 +33,7 @@ class CarpetTravelLocalDataSource @Inject constructor(
         return carpetTravelDao.updateSpaceShip(spaceShip)
     }
 
-    override suspend fun deleteAllSpaceShips() {
+    override suspend fun deleteAllSpaceStations() {
         carpetTravelDao.deleteAllSpaceStations()
     }
 

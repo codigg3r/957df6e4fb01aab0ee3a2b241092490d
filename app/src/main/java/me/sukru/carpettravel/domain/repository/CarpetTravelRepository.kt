@@ -18,7 +18,7 @@ interface CarpetTravelRepository {
 
     suspend fun updateSpaceShip(spaceShip: SpaceShipEntity): Int
 
-    suspend fun deleteAllSpaceShips()
+    suspend fun deleteAllSpaceStations()
 
     fun getSpaceStationsFlow(stationName: String): Flow<List<SpaceStationEntity>>
 

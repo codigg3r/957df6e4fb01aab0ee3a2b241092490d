@@ -12,14 +12,17 @@ class RestartGameUseCase @Inject constructor(
 ) {
     suspend operator fun invoke() {
         withContext(Dispatchers.IO) {
-            localDataSource.deleteAllSpaceShips()
-            val spaceStations = remoteDataSource.getSpaceStations()
-            localDataSource.insertSpaceStations(spaceStations.map {
-                if (it.name == "Dünya") it.copy(
-                    isCurrentStation = true,
-                    isVisited = true
-                ) else it
-            })
+            val oldSpaceStations = localDataSource.getSpaceStations()
+            localDataSource.deleteAllSpaceStations()
+            val spaceStations = remoteDataSource.getSpaceStations().map { newSpaceStation ->
+                oldSpaceStations.firstOrNull { it.name == newSpaceStation.name }?.let {
+                    newSpaceStation.copy(
+                        isFavorite = it.isFavorite,
+                        isVisited = it.name == "Dünya",
+                    )
+                } ?: newSpaceStation
+            }
+            localDataSource.insertSpaceStations(spaceStations)
         }
     }
 }

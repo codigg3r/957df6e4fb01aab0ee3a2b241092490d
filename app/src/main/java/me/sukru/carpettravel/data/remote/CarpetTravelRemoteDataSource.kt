@@ -34,7 +34,7 @@ class CarpetTravelRemoteDataSource @Inject constructor(
         throw NotImplementedError()
     }
 
-    override suspend fun deleteAllSpaceShips() {
+    override suspend fun deleteAllSpaceStations() {
         throw NotImplementedError()
     }
 
