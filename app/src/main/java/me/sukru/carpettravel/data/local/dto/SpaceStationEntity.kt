@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class SpaceStationEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
+    val _id: Long = 0L,
     val name: String,
     val coordinateX: Double,
     val coordinateY: Double,

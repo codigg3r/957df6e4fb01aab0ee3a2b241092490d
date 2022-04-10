@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class SpaceShipEntity(
     @PrimaryKey(autoGenerate = false)
-    val id: Long = 0L,
+    val _id: Long = 0L,
     val name: String?,
     val strength: Int?,
     val speed: Int?,

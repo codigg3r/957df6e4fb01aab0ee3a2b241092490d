@@ -37,7 +37,7 @@ fun SpaceShip.toEntity(): SpaceShipEntity {
 
 fun Station.toEntity(): SpaceStationEntity {
     return SpaceStationEntity(
-        id = id,
+        _id = id,
         name = name,
         coordinateX = coordinateX,
         coordinateY = coordinateY,
@@ -52,7 +52,7 @@ fun Station.toEntity(): SpaceStationEntity {
 
 fun SpaceStationEntity.toDomain(): Station {
     return Station(
-        id = id,
+        id = _id,
         name = name,
         coordinateX = coordinateX,
         coordinateY = coordinateY,
