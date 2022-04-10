@@ -45,7 +45,9 @@ class TravelToStationUseCase @Inject constructor(
             localDataSource.updateSpaceStation(
                 nextStation.copy(
                     isCurrentStation = true,
-                    isVisited = true
+                    isVisited = true,
+                    need = 0,
+                    stock = nextStation.need + nextStation.stock
                 ).toEntity()
             )
             if (localDataSource.isAllStationsVisited()) {

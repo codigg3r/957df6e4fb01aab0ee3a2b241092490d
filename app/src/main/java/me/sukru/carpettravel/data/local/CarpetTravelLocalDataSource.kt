@@ -13,7 +13,7 @@ class CarpetTravelLocalDataSource @Inject constructor(
         return carpetTravelDao.getSpaceStations()
     }
 
-    override suspend fun getSpaceShip(): Flow<SpaceShipEntity> {
+    override fun getSpaceShip(): Flow<SpaceShipEntity> {
         return carpetTravelDao.getSpaceShip()
     }
 
@@ -34,7 +34,7 @@ class CarpetTravelLocalDataSource @Inject constructor(
     }
 
     override suspend fun deleteAllSpaceShips() {
-
+        carpetTravelDao.deleteAllSpaceStations()
     }
 
     override fun getSpaceStationsFlow(stationName: String): Flow<List<SpaceStationEntity>> {

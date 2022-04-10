@@ -38,4 +38,6 @@ interface CarpetTravelDao {
     @Query("SELECT COUNT(*) FROM SpaceStationEntity WHERE isVisited like 0")
     fun notYetVisitedStationsCount(): Int
 
+    @Query("DELETE FROM SpaceStationEntity")
+    fun deleteAllSpaceStations()
 }

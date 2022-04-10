@@ -24,6 +24,7 @@ class StationViewModel @Inject constructor(
     private val updateFavoriteStation: UpdateFavoriteStation,
     private val getCurrentStationUseCase: GetCurrentStationUseCase,
     private val travelToStationUseCase: TravelToStationUseCase,
+    private val restartGameUseCase: RestartGameUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(StationState())
@@ -182,7 +183,9 @@ class StationViewModel @Inject constructor(
     }
 
     private fun resetGame() {
-
+        viewModelScope.launch {
+            restartGameUseCase()
+        }
     }
 
     fun favoriteStation(station: Station) {
