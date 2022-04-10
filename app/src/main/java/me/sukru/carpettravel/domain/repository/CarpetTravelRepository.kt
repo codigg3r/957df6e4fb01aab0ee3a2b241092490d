@@ -24,7 +24,7 @@ interface CarpetTravelRepository {
 
     fun getFavoriteStationsFlow(): Flow<List<SpaceStationEntity>>
 
-    fun getCurrentStationFlow(): Flow<SpaceStationEntity>
+    fun getCurrentStationFlow(): Flow<SpaceStationEntity?>
 
     fun isAllStationsVisited(): Boolean
 }

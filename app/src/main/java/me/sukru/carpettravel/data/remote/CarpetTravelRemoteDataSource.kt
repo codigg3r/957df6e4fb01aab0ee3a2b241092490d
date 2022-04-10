@@ -46,7 +46,7 @@ class CarpetTravelRemoteDataSource @Inject constructor(
         throw NotImplementedError()
     }
 
-    override fun getCurrentStationFlow(): Flow<SpaceStationEntity> {
+    override fun getCurrentStationFlow(): Flow<SpaceStationEntity?> {
         throw NotImplementedError()
     }
 

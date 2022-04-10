@@ -45,7 +45,7 @@ class CarpetTravelLocalDataSource @Inject constructor(
         return carpetTravelDao.getFavoriteStationsFlow()
     }
 
-    override fun getCurrentStationFlow(): Flow<SpaceStationEntity> {
+    override fun getCurrentStationFlow(): Flow<SpaceStationEntity?> {
         return carpetTravelDao.getCurrentStation()
     }
 
