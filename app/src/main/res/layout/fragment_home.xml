@@ -8,20 +8,20 @@
     tools:context=".presentation.home.HomeFragment">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/home_nav_host_fragment"
+        android:id="@+id/fcvHomeNavHost"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@id/bnvHome"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/home_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bnvHome"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="16dp"

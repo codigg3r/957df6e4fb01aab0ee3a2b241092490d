@@ -31,20 +31,20 @@ class SpaceShipCreateFragment : BindingFragment<FragmentCreateSpaceShipBinding>(
 
     private fun bindUiToViewModel() {
         binding.apply {
-            spaceshipName.addTextChangedListener {
+            tiSpaceshipName.addTextChangedListener {
                 viewModel.onNameChanged(it?.toString() ?: "")
             }
-            speed.setOnChangeListener {
+            rsSpeed.setOnChangeListener {
                 viewModel.onSpeedChanged(it)
 
             }
-            strength.setOnChangeListener {
+            rsStrength.setOnChangeListener {
                 viewModel.onStrengthChanged(it)
             }
-            capacity.setOnChangeListener {
+            rsCapacity.setOnChangeListener {
                 viewModel.onCapacityChanged(it)
             }
-            continueButton.setOnClickListener {
+            btnContinue.setOnClickListener {
                 viewModel.onContinueClicked()
             }
         }
@@ -76,16 +76,16 @@ class SpaceShipCreateFragment : BindingFragment<FragmentCreateSpaceShipBinding>(
 
     private fun bindViewModelToUi(state: SpaceShipState) {
         binding.apply {
-            if (spaceshipName.text?.toString() != state.name) {
-                spaceshipName.setText(state.name)
+            if (tiSpaceshipName.text?.toString() != state.name) {
+                tiSpaceshipName.setText(state.name)
             }
-            speed.value = state.speed
-            speed.maxValue = state.speedMaxValue
-            strength.value = state.strength
-            strength.maxValue = state.strengthMaxValue
-            capacity.value = state.capacity
-            capacity.maxValue = state.capacityMaxValue
-            spaceShipPoints.text = state.remainingPoint
+            rsSpeed.value = state.speed
+            rsSpeed.maxValue = state.speedMaxValue
+            rsStrength.value = state.strength
+            rsStrength.maxValue = state.strengthMaxValue
+            rsCapacity.value = state.capacity
+            rsCapacity.maxValue = state.capacityMaxValue
+            tvSpaceshipPoints.text = state.remainingPoint
 
         }
     }

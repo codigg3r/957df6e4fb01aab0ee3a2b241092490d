@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.sukru.carpettravel.R
+import me.sukru.carpettravel.common.extensions.setImageResourceIf
 import me.sukru.carpettravel.databinding.RowFavoriteSpaceStationBinding
 import me.sukru.carpettravel.domain.model.Station
 
@@ -16,19 +17,23 @@ class FavoriteStationAdapter(
     inner class StationViewHolder(private val binding: RowFavoriteSpaceStationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Station) {
-            binding.stationName.text = item.name
-            binding.eus.text = "EUS: ${firstTwoDecimals(item.eus)}"
-            binding.stationStock.text = "${item.capacity}/${item.stock}"
-            binding.favoriteButton.setImageResource(if (item.isFavorite) R.drawable.ic_baseline_star_24 else R.drawable.ic_baseline_star_border_24)
-            binding.favoriteButton.setOnClickListener {
-                onFavoriteClick(item)
+            binding.apply {
+                tvStationName.text = item.name
+                tvEus.text = root.context.getString(R.string.eus_left, item.eus)
+                tvStationStock.text =
+                    root.context.getString(R.string.station_stock, item.capacity, item.stock)
+                btnFavorite.setImageResourceIf(
+                    item.isFavorite,
+                    R.drawable.ic_baseline_star_24,
+                    R.drawable.ic_baseline_star_border_24
+                )
+                btnFavorite.setOnClickListener {
+                    onFavoriteClick(item)
+                }
             }
         }
     }
 
-    fun firstTwoDecimals(value: Double): String {
-        return String.format("%.2f", value)
-    }
     class StationDiffCallbackUtil : DiffUtil.ItemCallback<Station>() {
 
         override fun areItemsTheSame(oldItem: Station, newItem: Station): Boolean {

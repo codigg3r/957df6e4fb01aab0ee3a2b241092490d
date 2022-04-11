@@ -17,7 +17,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navHostFragment =
-            childFragmentManager.findFragmentById(R.id.home_nav_host_fragment) as NavHostFragment
-        binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
+            childFragmentManager.findFragmentById(R.id.fcvHomeNavHost) as NavHostFragment
+        binding.bnvHome.setupWithNavController(navHostFragment.navController)
     }
 }

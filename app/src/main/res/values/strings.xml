@@ -12,5 +12,12 @@
     <string name="capacity">Capacity</string>
     <string name="strength">Strength</string>
     <string name="speed">Speed</string>
+    <string name="ugs_left">UGS\n%.2f</string>
+    <string name="eus_left">EUS\n%.2f</string>
+    <string name="ds_left">DS\n%.2f</string>
+    <string name="spaceship_health_left">Spaceship Health\n%d</string>
+    <string name="spaceship_time_left">Spaceship Time\n%.2fs</string>
+    <string name="current_station">Current Station: %s</string>
+    <string name="station_stock">%1$d / %2$d</string>
     <string name="spaceship_create_description">Set your spaceship name and you have 15 points to spend on your spaceship. You can spend points on the following:</string>
 </resources>

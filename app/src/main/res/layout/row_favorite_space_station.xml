@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_corner_bg"
     android:paddingBottom="10dp"
+    android:background="@drawable/rounded_corner_bg"
     android:layout_margin="10dp">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/favorite_button"
+        android:id="@+id/btnFavorite"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginTop="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/station_name"
+        android:id="@+id/tvStationName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,13 +29,13 @@
         android:paddingEnd="8dp"
         android:textColor="@color/black_900"
         android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@id/favorite_button"
+        app:layout_constraintEnd_toStartOf="@id/btnFavorite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Hello World Station" />
 
     <TextView
-        android:id="@+id/station_stock"
+        android:id="@+id/tvStationStock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -43,20 +43,20 @@
         android:fontFamily="@font/roboto_regular"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/station_name"
+        app:layout_constraintTop_toBottomOf="@id/tvStationName"
         tools:text="Stock: 10" />
 
     <TextView
-        android:id="@+id/eus"
+        android:id="@+id/tvEus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_regular"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/favorite_button"
+        app:layout_constraintEnd_toEndOf="@id/btnFavorite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/station_name"
+        app:layout_constraintTop_toBottomOf="@id/tvStationName"
         tools:text="EUS: 10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

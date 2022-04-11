@@ -42,12 +42,12 @@ class FavoriteStationFragment: BindingFragment<FragmentFavoriteStationBinding>()
 
     private fun bindViewModelToUi(state: FavoriteStationUiState) {
         binding.apply {
-            count.text = state.favoriteStationCount.toString()
+            tvCount.text = state.favoriteStationCount.toString()
             if (state.error != null) {
                 showAlertDialog(state.error, getString(R.string.error))
             }
-            if (favoriteStationList.adapter == null) {
-                favoriteStationList.adapter = favoriteStationAdapter
+            if (rvFavoriteStationList.adapter == null) {
+                rvFavoriteStationList.adapter = favoriteStationAdapter
             }
             favoriteStationAdapter?.submitList(state.favoriteStationList)
         }

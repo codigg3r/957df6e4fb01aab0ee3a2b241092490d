@@ -13,7 +13,7 @@
         android:layout_marginBottom="30dp">
 
         <TextView
-            android:id="@+id/space_ship_title"
+            android:id="@+id/tvSpaceShipTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -21,27 +21,27 @@
             android:text="Remaining Points: "
             android:textColor="@color/gray"
             android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@id/space_ship_points"
+            app:layout_constraintEnd_toStartOf="@id/tvSpaceshipPoints"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/space_ship_points"
+            android:id="@+id/tvSpaceshipPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="15"
+            tools:text="15"
             android:textColor="@color/gray"
             android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="@id/space_ship_title"
+            app:layout_constraintBottom_toBottomOf="@id/tvSpaceShipTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/space_ship_title"
-            app:layout_constraintTop_toTopOf="@id/space_ship_title" />
+            app:layout_constraintStart_toEndOf="@+id/tvSpaceShipTitle"
+            app:layout_constraintTop_toTopOf="@id/tvSpaceShipTitle" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -53,10 +53,10 @@
             android:textColor="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/space_ship_title" />
+            app:layout_constraintTop_toBottomOf="@id/tvSpaceShipTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/spaceship_name_input_layout"
+            android:id="@+id/tilSpaceshipNameInput"
             style="@style/TextInputLayout.OutlineBox.CustomStyle"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -64,10 +64,10 @@
             android:layout_marginTop="24sp"
             android:layout_marginEnd="16dp"
             android:hint="@string/space_ship_name"
-            app:layout_constraintTop_toBottomOf="@id/description">
+            app:layout_constraintTop_toBottomOf="@id/tvDescription">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/spaceship_name"
+                android:id="@+id/tiSpaceshipName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:lines="1"
@@ -76,7 +76,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/seekbar_speed_title"
+            android:id="@+id/tvSeekbarSpeedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -84,12 +84,12 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/speed"
             android:textColor="@color/gray"
-            app:layout_constraintBottom_toTopOf="@+id/speed"
+            app:layout_constraintBottom_toTopOf="@+id/rsSpeed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spaceship_name_input_layout" />
+            app:layout_constraintTop_toBottomOf="@id/tilSpaceshipNameInput" />
 
         <me.sukru.carpettravel.common.RestrictedSlider
-            android:id="@+id/speed"
+            android:id="@+id/rsSpeed"
             style="@style/Widget.MaterialComponents.Slider.CustomStyle"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -101,10 +101,10 @@
             android:valueTo="15"
             app:labelBehavior="floating"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seekbar_speed_title" />
+            app:layout_constraintTop_toBottomOf="@id/tvSeekbarSpeedTitle" />
 
         <TextView
-            android:id="@+id/seekbar_strength_title"
+            android:id="@+id/tvSliderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -112,12 +112,12 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/strength"
             android:textColor="@color/gray"
-            app:layout_constraintBottom_toTopOf="@+id/strength"
+            app:layout_constraintBottom_toTopOf="@+id/rsStrength"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/speed" />
+            app:layout_constraintTop_toBottomOf="@id/rsSpeed" />
 
         <me.sukru.carpettravel.common.RestrictedSlider
-            android:id="@+id/strength"
+            android:id="@+id/rsStrength"
             style="@style/Widget.MaterialComponents.Slider.CustomStyle"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -129,10 +129,10 @@
             android:valueTo="15"
             app:labelBehavior="floating"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seekbar_strength_title" />
+            app:layout_constraintTop_toBottomOf="@id/tvSliderTitle" />
 
         <TextView
-            android:id="@+id/seekbar_capacity_title"
+            android:id="@+id/tvSliderCapacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -140,12 +140,12 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/capacity"
             android:textColor="@color/gray"
-            app:layout_constraintBottom_toTopOf="@+id/capacity"
+            app:layout_constraintBottom_toTopOf="@+id/rsCapacity"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/strength" />
+            app:layout_constraintTop_toBottomOf="@id/rsStrength" />
 
         <me.sukru.carpettravel.common.RestrictedSlider
-            android:id="@+id/capacity"
+            android:id="@+id/rsCapacity"
             style="@style/Widget.MaterialComponents.Slider.CustomStyle"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -157,10 +157,10 @@
             android:valueTo="15"
             app:labelBehavior="floating"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seekbar_capacity_title" />
+            app:layout_constraintTop_toBottomOf="@id/tvSliderCapacity" />
 
         <TextView
-            android:id="@+id/continue_button"
+            android:id="@+id/btnContinue"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -172,6 +172,6 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/capacity" />
+            app:layout_constraintTop_toBottomOf="@id/rsCapacity" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

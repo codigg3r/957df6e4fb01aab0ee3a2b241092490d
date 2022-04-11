@@ -8,7 +8,7 @@
     tools:context=".presentation.favorite_station.FavoriteStationFragment">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -20,25 +20,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/count"
+        android:id="@+id/tvCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto_medium"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/tvTitle"
         tools:text="10" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favorite_station_list"
+        android:id="@+id/rvFavoriteStationList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:listitem="@layout/row_favorite_space_station" />
 </androidx.constraintlayout.widget.ConstraintLayout>
