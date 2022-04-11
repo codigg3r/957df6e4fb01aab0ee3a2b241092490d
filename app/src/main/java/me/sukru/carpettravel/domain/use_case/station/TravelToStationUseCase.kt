@@ -9,7 +9,7 @@ import me.sukru.carpettravel.domain.model.Station
 import javax.inject.Inject
 
 class TravelToStationUseCase @Inject constructor(
-    private val localDataSource: CarpetTravelLocalDataSource
+    private val localRepositoryImpl: CarpetTravelLocalRepositoryImpl
 ) {
     suspend operator fun invoke(
         spaceShip: SpaceShip,
@@ -31,7 +31,7 @@ class TravelToStationUseCase @Inject constructor(
             newDsTimer = spaceShip.ds.div(1_000).times(resetHealthFactor).plus(newDsTimer)
         }
         return withContext(Dispatchers.IO) {
-            localDataSource.updateSpaceShip(
+            localRepositoryImpl.updateSpaceShip(
                 spaceShip.copy(
                     eus = spaceShip.eus - nextStation.eus,
                     ugs = spaceShip.ugs - nextStation.need,
@@ -39,10 +39,10 @@ class TravelToStationUseCase @Inject constructor(
                     dsTimer = newDsTimer,
                 ).toEntity()
             )
-            localDataSource.updateSpaceStation(
+            localRepositoryImpl.updateSpaceStation(
                 currentStation.copy(isCurrentStation = false).toEntity()
             )
-            localDataSource.updateSpaceStation(
+            localRepositoryImpl.updateSpaceStation(
                 nextStation.copy(
                     isCurrentStation = true,
                     isVisited = true,
@@ -50,7 +50,7 @@ class TravelToStationUseCase @Inject constructor(
                     stock = nextStation.need + nextStation.stock
                 ).toEntity()
             )
-            if (localDataSource.isAllStationsVisited()) {
+            if (localRepositoryImpl.isAllStationsVisited()) {
                 TravelStatus.Finished
             } else {
                 TravelStatus.Success(nextStation.name)

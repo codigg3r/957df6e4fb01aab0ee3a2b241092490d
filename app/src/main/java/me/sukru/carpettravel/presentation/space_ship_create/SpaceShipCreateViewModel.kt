@@ -2,9 +2,11 @@ package me.sukru.carpettravel.presentation.space_ship_create
 
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.SingleLiveEvent
 import me.sukru.carpettravel.domain.model.SpaceShip
@@ -101,10 +103,12 @@ class SpaceShipCreateViewModel @Inject constructor(
     fun onContinueClicked() {
         viewModelScope.launch {
             val isSuccessful = saveSpaceShip()
-            if(isSuccessful) {
-                _uiEvent.value = SpaceShipUiEvent.Navigate(R.id.homeFragment)
-            } else {
-                _uiEvent.value = SpaceShipUiEvent.ShowError("Error creating space ship")
+            withContext(Dispatchers.Main) {
+                if(isSuccessful) {
+                    _uiEvent.value = SpaceShipUiEvent.Navigate(R.id.homeFragment)
+                } else {
+                    _uiEvent.value = SpaceShipUiEvent.ShowError("Error creating space ship")
+                }
             }
         }
     }

@@ -23,7 +23,10 @@ class StationAdapter(
             binding.stationName.text = item.name
             binding.eus.text = "EUS: ${(item.eus).nDecimal(2)}"
             binding.stationStock.text = "${item.capacity}/${item.stock}"
-            binding.favoriteButton.setImageResource(if (item.isFavorite) R.drawable.ic_baseline_star_24 else R.drawable.ic_baseline_star_border_24)
+            binding.favoriteButton.setImageResourceIf(item.isFavorite,
+                R.drawable.ic_baseline_star_24,
+                R.drawable.ic_baseline_star_border_24
+            )
             binding.favoriteButton.setOnClickListener {
                 onFavoriteClick(item)
             }

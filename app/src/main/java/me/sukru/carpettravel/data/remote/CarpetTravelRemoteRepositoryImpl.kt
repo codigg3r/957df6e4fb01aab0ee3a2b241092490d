@@ -7,7 +7,7 @@ import me.sukru.carpettravel.data.toEntity
 import me.sukru.carpettravel.domain.repository.CarpetTravelRepository
 import javax.inject.Inject
 
-class CarpetTravelRemoteDataSource @Inject constructor(
+class CarpetTravelRemoteRepositoryImpl @Inject constructor(
     private val api: SpaceStationApi
 ) : CarpetTravelRepository {
     override suspend fun getSpaceStations(): List<SpaceStationEntity> {
