@@ -6,7 +6,6 @@ import kotlin.math.pow
 
 /**
  * currentStation is the current station the user is at.
- * if you want to get the distance to the next station, use the nextStation property.
  * if you want to calculate the distance between origin set currentStation to null.
  */
 fun SpaceStationEntity.calculateEUS(currentStation: Station? = null): Double {

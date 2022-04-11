@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.extensions.nDecimal
+import me.sukru.carpettravel.common.extensions.setImageResourceIf
 import me.sukru.carpettravel.databinding.RowSpaceStationBinding
 import me.sukru.carpettravel.domain.model.Station
 

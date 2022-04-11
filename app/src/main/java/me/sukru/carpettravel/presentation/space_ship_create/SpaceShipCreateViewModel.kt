@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.sukru.carpettravel.R
@@ -25,7 +26,7 @@ class SpaceShipCreateViewModel @Inject constructor(
     private var spaceShip:SpaceShip? = null
 
     private val _state = MutableStateFlow(SpaceShipState())
-    val state: StateFlow<SpaceShipState> = _state
+    val state = _state.asStateFlow()
 
     private val _uiEvent = SingleLiveEvent<SpaceShipUiEvent>()
     val uiEvent: LiveData<SpaceShipUiEvent> get() = _uiEvent
@@ -101,7 +102,11 @@ class SpaceShipCreateViewModel @Inject constructor(
     }
 
     fun onContinueClicked() {
-        viewModelScope.launch {
+        if (spaceShip?.name?.isEmpty() == true) {
+            _uiEvent.value = SpaceShipUiEvent.ShowError("Name cannot be empty")
+            return
+        }
+        viewModelScope.launch(Dispatchers.Default) {
             val isSuccessful = saveSpaceShip()
             withContext(Dispatchers.Main) {
                 if(isSuccessful) {

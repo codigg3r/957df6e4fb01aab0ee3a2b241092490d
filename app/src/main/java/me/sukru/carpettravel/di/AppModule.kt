@@ -1,14 +1,12 @@
 package me.sukru.carpettravel.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import me.sukru.carpettravel.common.Constants
+import me.sukru.carpettravel.BuildConfig
 import me.sukru.carpettravel.data.local.CarpetTravelDao
 import me.sukru.carpettravel.data.local.CarpetTravelDatabase
 import me.sukru.carpettravel.data.remote.SpaceStationApi
@@ -23,7 +21,7 @@ object AppModule {
     @Singleton
     fun provideSpaceStationApi(): SpaceStationApi {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(SpaceStationApi::class.java)

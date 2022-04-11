@@ -6,4 +6,11 @@
     <string name="favorites">Favorites</string>
     <string name="travel">TRAVEL</string>
     <string name="search">Search</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error</string>
+    <string name="capacity">Capacity</string>
+    <string name="strength">Strength</string>
+    <string name="speed">Speed</string>
+    <string name="spaceship_create_description">Set your spaceship name and you have 15 points to spend on your spaceship. You can spend points on the following:</string>
 </resources>

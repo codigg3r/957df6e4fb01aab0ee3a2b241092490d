@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.BindingFragment
-import me.sukru.carpettravel.common.extensions.showWarning
+import me.sukru.carpettravel.common.extensions.showAlertDialog
 import me.sukru.carpettravel.databinding.FragmentCreateSpaceShipBinding
 
 @AndroidEntryPoint
@@ -24,7 +25,8 @@ class SpaceShipCreateFragment : BindingFragment<FragmentCreateSpaceShipBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindUiToViewModel()
-        observeViewModel()
+        collectStateFlow()
+        collectUiEvents()
     }
 
     private fun bindUiToViewModel() {
@@ -48,27 +50,29 @@ class SpaceShipCreateFragment : BindingFragment<FragmentCreateSpaceShipBinding>(
         }
     }
 
-    private fun observeViewModel() {
+    private fun collectStateFlow() {
         lifecycleScope.launchWhenCreated {
             viewModel.state.collect {
                 bindViewModelToUi(it)
             }
         }
+    }
+
+    private fun collectUiEvents() {
         viewModel.uiEvent.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is SpaceShipUiEvent.Navigate -> {
                     findNavController().apply {
                         navigate(it.id)
                     }
                 }
                 is SpaceShipUiEvent.ShowError -> {
-                    findNavController().apply {
-                        showWarning(it.errorMessage, "Error")
-                    }
+                    showAlertDialog(it.errorMessage, getString(R.string.error))
                 }
             }
         }
     }
+
 
     private fun bindViewModelToUi(state: SpaceShipState) {
         binding.apply {

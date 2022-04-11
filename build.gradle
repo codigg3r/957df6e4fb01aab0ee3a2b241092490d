@@ -1,11 +1,14 @@
 buildscript {
+    ext.kotlin_version = "1.5.21"
+    ext.room_version = "2.2.0"
+    ext.navigation_component_version = "2.4.1"
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
     }
 }

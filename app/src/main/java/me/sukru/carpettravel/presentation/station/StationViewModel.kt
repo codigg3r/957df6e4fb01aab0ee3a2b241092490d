@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.Resource
 import me.sukru.carpettravel.common.SingleLiveEvent
 import me.sukru.carpettravel.domain.model.SpaceShip
@@ -28,7 +26,7 @@ class StationViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(StationState())
-    val state: StateFlow<StationState> = _state
+    val state = _state.asStateFlow()
 
     private var spaceShip: SpaceShip? = null
     private var currentStation: Station? = null

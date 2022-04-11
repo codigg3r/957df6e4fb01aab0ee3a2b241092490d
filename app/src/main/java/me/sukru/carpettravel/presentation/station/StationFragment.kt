@@ -1,11 +1,8 @@
 package me.sukru.carpettravel.presentation.station
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -17,7 +14,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.withContext
 import me.sukru.carpettravel.common.BindingFragment
 import me.sukru.carpettravel.common.extensions.nDecimal
-import me.sukru.carpettravel.common.extensions.showWarning
+import me.sukru.carpettravel.common.extensions.showAlertDialog
 import me.sukru.carpettravel.databinding.FragmentStationBinding
 import me.sukru.carpettravel.domain.model.Station
 
@@ -40,7 +37,8 @@ class StationFragment : BindingFragment<FragmentStationBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindUiToViewModel()
-        observeViewModel()
+        collectStateFlow()
+        observeUiEvents()
     }
 
     private fun bindUiToViewModel() {
@@ -49,7 +47,7 @@ class StationFragment : BindingFragment<FragmentStationBinding>() {
         }
     }
 
-    private fun observeViewModel() {
+    private fun collectStateFlow() {
         lifecycleScope.launchWhenResumed {
             viewModel.state.collect {
                 withContext(Dispatchers.Main) {
@@ -57,13 +55,16 @@ class StationFragment : BindingFragment<FragmentStationBinding>() {
                 }
             }
         }
+    }
+
+    private fun observeUiEvents() {
         viewModel.uiEvent.observe(viewLifecycleOwner) {
             when(it) {
                 is StationUiEvent.ShowError -> {
-                    showWarning(it.errorMessage, "Error")
+                    showAlertDialog(it.errorMessage, "Error")
                 }
                 is StationUiEvent.ShowDialog -> {
-                    showWarning(it.message, it.title)
+                    showAlertDialog(it.message, it.title)
                 }
             }
         }

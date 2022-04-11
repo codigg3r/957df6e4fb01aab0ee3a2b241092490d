@@ -1,7 +1,9 @@
 package me.sukru.carpettravel.domain.use_case.station
 
+import android.app.Application
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import me.sukru.carpettravel.R
 import me.sukru.carpettravel.common.Resource
 import me.sukru.carpettravel.common.extensions.calculateEUS
 import me.sukru.carpettravel.data.local.CarpetTravelLocalRepositoryImpl
@@ -11,9 +13,9 @@ import me.sukru.carpettravel.domain.model.Station
 import javax.inject.Inject
 
 class GetStationListUseCase @Inject constructor(
-    private val remoteDataSource: CarpetTravelRemoteDataSource,
-    private val localDataSource: CarpetTravelLocalDataSource,
-) {
+    private val remoteRepositoryImpl: CarpetTravelRemoteRepositoryImpl,
+    private val localRepositoryImpl: CarpetTravelLocalRepositoryImpl
+    ) {
     /**
      * Get station list from remote data source
      * @return [Resource] with [List] of [Station]
